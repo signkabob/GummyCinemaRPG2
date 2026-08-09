@@ -17,9 +17,9 @@ public abstract class Character : MonoBehaviour
 
     protected Rigidbody2D rigidbody;
     protected Animator animator;
-    protected ParticleSystem kaboomVFX;
-    protected TextMeshPro damageIndicator;
-    [SerializeField] protected string damageIndicatorName = "Damage Popup";
+    [SerializeField] protected ParticleSystem kaboomVFX;
+    [SerializeField] TextMeshPro damageIndicator;
+    //[SerializeField] protected string damageIndicatorName = "Damage Popup";
     private BattleStage battleStage;
     
     [Header("Status")]
@@ -31,8 +31,6 @@ public abstract class Character : MonoBehaviour
     public int CurrentHealth { get { return currentHealth; } }
     
     protected BattleStage BattleStage { get { return battleStage; } }
-
-    
     
     public bool IsAlive
     {
@@ -43,7 +41,7 @@ public abstract class Character : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        damageIndicator = transform.Find(damageIndicatorName).GetComponent<TextMeshPro>();
+        //damageIndicator = transform.Find(damageIndicatorName).GetComponent<TextMeshPro>();
         currentHealth = MaxHealth;
         RegisterActions();
     }

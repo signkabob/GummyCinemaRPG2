@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class Gangster : Enemy
 {
-    [Header("Gangster Attacks")]
+    [Header("Gangster's Attacks")]
     [SerializeField] private int tackleDamage;
     [SerializeField] private int blasterDamage;
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private Vector3 blasterAimOffset = new Vector3(-1,0,0);
 
-    [Header("Positioning")] 
+    [Header("Gangster's Positioning")] 
     [SerializeField] private Transform spriteCenterOrigin;
     [SerializeField] private Vector3 originalPosition;
     [SerializeField] private float speedForce = 20.0f;
@@ -18,7 +18,7 @@ public class Gangster : Enemy
     [SerializeField] private float stoppingDistance = 5.0f;
     [SerializeField] private bool isWrapped = false;
 
-    [Header("Animation")]
+    [Header("Gangster's Animation")]
     [SerializeField] private string idleAnimationState = "Gangster_Idle";
     [SerializeField] private string tackleAnimationState = "Gangster_Run";
     [SerializeField] private string blasterAnimationState = "Gangster_Blast";
@@ -26,42 +26,55 @@ public class Gangster : Enemy
     
     private void Start()
     {
-        spriteCenterOrigin = transform.GetChild(0).transform;
+        // The parent origin starts at the bottom while the child origin starts at the center
+        spriteCenterOrigin = transform.GetChild(0).transform; 
         originalPosition = transform.position;
     }
     
-    // Constantly checking for out-of-bound to be teleported to the other side and
-    // stop at its original position
     private void Update()
     {
+        // If the enemy goes beyond the left bound of the screen...
         if (transform.position.x < xOutOfBound)
         {
             WrapToOtherSide();
         }
-
+        
+        // If the enemy is about to reach its spawning position after wrapping...
         if (isWrapped && (transform.position.x - originalPosition.x < stoppingDistance))
         {
             Brake();
         }
     }
     
+    /// <summary>
+    /// Register Gangster's battle actions
+    /// </summary>
     protected override void RegisterActions()
     {
         possibleActions.Add(new ActionChoice("Tackle", TargetKind.SingleEnemy, Tackle));
         possibleActions.Add(new ActionChoice("Blaster", TargetKind.SingleEnemy, Blaster));
     }
 
+    /// <summary>
+    /// Play the idle animation
+    /// </summary>
     public void Idle()
     {
         animator.Play(idleAnimationState);
     }
 
+    /// <summary>
+    /// Rush to the left across the stage
+    /// </summary>
     public void Tackle()
     {
         animator.Play(tackleAnimationState);
         rigidbody.AddForce(Vector2.left * speedForce, ForceMode2D.Impulse);
     }
     
+    /// <summary>
+    ///  Spawn a fireball to the left across the stage 
+    /// </summary>
     public void Blaster()
     {
         animator.Play(blasterAnimationState);
@@ -70,6 +83,9 @@ public class Gangster : Enemy
         // wait for the fireball to pass
     }
 
+    /// <summary>
+    /// Wrap from the left bound to the right bound of the stage
+    /// </summary>
     private void WrapToOtherSide()
     {
         {
@@ -78,6 +94,9 @@ public class Gangster : Enemy
         }
     }
 
+    /// <summary>
+    /// Brake immediately on the original positon 
+    /// </summary>
     private void Brake()
     {
         rigidbody.linearVelocity = Vector2.zero;
@@ -86,7 +105,11 @@ public class Gangster : Enemy
         isWrapped = false;
     }
 
-    public IEnumerator Dying()
+    /// <summary>
+    /// Play the dying animation and VFX
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator PlayDyingAnimation()
     {
         animator.Play(dyingAnimationState);
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length/2);

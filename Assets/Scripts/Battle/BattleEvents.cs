@@ -9,6 +9,7 @@ public static class BattleEvents
     public static event Action<Character, string> ActionPerformed;
     public static event Action<Character, Character, int> DamageDealt;
     public static event Action<Character, Character, int> Healed;
+    public static event Action<Character, Character, int> CinemaRestored;
     public static event Action<Character> CharacterDied;
     public static event Action<Team> BattleEnded;
 
@@ -43,6 +44,10 @@ public static class BattleEvents
     public static void RaiseHealed(Character source, Character target, int amount) 
     { 
         Healed?.Invoke(source, target, amount); 
+    }
+    public static void RaiseCinemaRestored(Character source, Character target, int amount) 
+    { 
+        CinemaRestored?.Invoke(source, target, amount); 
     }
     public static void RaiseCharacterDied(Character character) 
     { 
