@@ -6,10 +6,30 @@ public class BattleStage
     private List<Character> party;
     private List<Character> enemies;
 
-    public BattleStage(List<Character> party, List<Character> enemies)
+    public BattleStage(GameObject spawningPlayer, List<GameObject> spawningEnemies, float enemyPositionOffset)
     {
-        this.party = party;
-        this.enemies = enemies;
+        party = new List<Character>();
+        party.Add(SpawnPlayer(spawningPlayer));
+        
+        enemies  = new List<Character>();
+        SpawnEnemies(spawningEnemies, enemyPositionOffset);
+    }
+
+    public Character SpawnPlayer(GameObject player)
+    {
+        return GameObject.Instantiate(player).GetComponent<Character>();
+    }
+
+    public void SpawnEnemies(List<GameObject> enemies, float enemyPositionOffset)
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            GameObject enemy = enemies[i];
+            Character spawnedEnemy = GameObject.Instantiate(enemy, 
+                            enemy.transform.position + new Vector3(enemyPositionOffset* i, 0, 0), 
+                                   enemy.transform.rotation).GetComponent<Character>();
+            this.enemies.Add(spawnedEnemy);
+        }
     }
 
     public List<Character> GetLivingMembers(Team team)
