@@ -10,7 +10,7 @@ using TMPro;
  * 
  * Script for the enemy in the turn-based RPG battle
  */
-public class Enemy : MonoBehaviour
+public class EnemyNull : MonoBehaviour
 {
     // Defined global variables
     private BattleManager battleManager;

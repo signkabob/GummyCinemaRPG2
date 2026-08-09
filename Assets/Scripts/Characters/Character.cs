@@ -1,26 +1,38 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class Character : MonoBehaviour
 {
+    [Header("Base")]
     public string CharacterName;
     public int MaxHealth = 20;
 
     public event Action HealthChanged;
     public event Action Died;
     
+    public Team Team;
+    protected List<ActionChoice> possibleActions = new List<ActionChoice>();
+
+    protected Rigidbody2D rigidbody;
+    protected Animator animator;
+    protected ParticleSystem kaboomVFX;
+    protected TextMeshPro damageIndicator;
+    [SerializeField] protected string damageIndicatorName = "Damage Popup";
     private BattleStage battleStage;
-    private int currentHealth;
-    private string plannedLabel;
-    private Character plannedTarget;
+    
+    [Header("Status")]
+    [SerializeField] private int currentHealth;
+    [SerializeField] private string plannedLabel;
+    [SerializeField] private Character plannedTarget;
     private Action onEndOfTurn;
     
     public int CurrentHealth { get { return currentHealth; } }
     
     protected BattleStage BattleStage { get { return battleStage; } }
 
-    public Team Team;
+    
     
     public bool IsAlive
     {
@@ -29,6 +41,9 @@ public abstract class Character : MonoBehaviour
     
     protected virtual void Awake()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+        damageIndicator = transform.Find(damageIndicatorName).GetComponent<TextMeshPro>();
         currentHealth = MaxHealth;
         RegisterActions();
     }
@@ -40,7 +55,7 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void RegisterActions()
     {
-        // Register actions here
+        Debug.Log("Registering Actions");
     }
 
     public void PlanAction(ActionChoice choice, Character target)
@@ -63,6 +78,16 @@ public abstract class Character : MonoBehaviour
         BattleEvents.RaiseActionPerformed(this, plannedLabel);
         onEndOfTurn.Invoke();
         onEndOfTurn = null;
+    }
+
+    public virtual void BasicAttack()
+    {
+        Debug.Log("Basic Attack!");
+    }
+
+    public virtual void SpecialAttack()
+    {
+        Debug.Log("Special Attack!");
     }
 
     protected Character ResolveEnemytarget()

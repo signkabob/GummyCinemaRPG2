@@ -10,7 +10,7 @@ public static class BattleEvents
     public static event Action<Character, Character, int> DamageDealt;
     public static event Action<Character, Character, int> Healed;
     public static event Action<Character> CharacterDied;
-    //public static event Action<Team> BattleEnded;
+    public static event Action<Team> BattleEnded;
 
     public static void RaiseBattleStarted() 
     { 
@@ -49,8 +49,8 @@ public static class BattleEvents
         CharacterDied?.Invoke(character); 
     }
     
-    // public static void RaiseBattleEnded(Team winner) 
-    // { 
-    //     BattleEnded?.Invoke(winner); 
-    // }
+    public static void RaiseBattleEnded(Team winner) 
+    { 
+         BattleEnded?.Invoke(winner); 
+    }
 }
