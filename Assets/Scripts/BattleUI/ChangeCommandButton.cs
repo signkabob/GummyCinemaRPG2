@@ -21,13 +21,11 @@ public class ChangeCommandButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
-        battleManager = GameObject.Find("Battle Manager").GetComponent<BattleManager>();
     }
 
     // Swap the command based on the direction once clicked 
     private void OnClick()
     {
-        // 
-        battleManager.ChangeCommand(rightArrow);
+        // battleManager.ChangeCommand(rightArrow);
     }
 }

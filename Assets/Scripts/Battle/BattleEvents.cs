@@ -4,8 +4,8 @@ public static class BattleEvents
 {
     public static event Action BattleStarted;
     public static event Action<int> RoundStarted;
-    public static event Action<Character> HeroActionSelectionStarted;
-    public static event Action HeroActionSelectionDone;
+    public static event Action<Character> FriendActionSelectionStarted;
+    public static event Action FriendActionSelectionDone;
     public static event Action<Character, string> ActionPerformed;
     public static event Action<Character, Character, int> DamageDealt;
     public static event Action<Character, Character, int> Healed;
@@ -22,14 +22,14 @@ public static class BattleEvents
         RoundStarted?.Invoke(round); 
     }
 
-    public static void RaiseHeroActionSelectionStarted(Character hero) 
+    public static void RaiseFriendActionSelectionStarted(Character friend) 
     { 
-        HeroActionSelectionStarted?.Invoke(hero); 
+        FriendActionSelectionStarted?.Invoke(friend); 
     }
 
-    public static void RaiseHeroActionSelectionDone() 
+    public static void RaiseFriendActionSelectionDone() 
     { 
-        HeroActionSelectionDone?.Invoke(); 
+        FriendActionSelectionDone?.Invoke(); 
     }
 
     public static void RaiseActionPerformed(Character actor, string label) 

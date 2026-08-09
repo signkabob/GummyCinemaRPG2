@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4244237772548938132}
-  - component: {fileID: 1804200236734472980}
+  - component: {fileID: 6990870714364003612}
   - component: {fileID: 1283252212780430582}
   - component: {fileID: 3001440453645149713}
   - component: {fileID: 1825391960726835887}
@@ -38,7 +38,7 @@ Transform:
   - {fileID: 4812918390135613356}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1804200236734472980
+--- !u!114 &6990870714364003612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,47 +47,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 5527358624952346248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f36e188a589f7a548a40a3262a6c8a30, type: 3}
+  m_Script: {fileID: 11500000, guid: 8671bc6bd80b9a63c9ea8a69ac44f18a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  spriteSheet:
-  - {fileID: -461228095, guid: b2ea0eb5e1fda5a4db1ddf2295fb09d9, type: 3}
-  - {fileID: -100711375, guid: b2ea0eb5e1fda5a4db1ddf2295fb09d9, type: 3}
-  - {fileID: 251959313, guid: b2ea0eb5e1fda5a4db1ddf2295fb09d9, type: 3}
-  - {fileID: 402130369, guid: b2ea0eb5e1fda5a4db1ddf2295fb09d9, type: 3}
-  - {fileID: 543300383, guid: b2ea0eb5e1fda5a4db1ddf2295fb09d9, type: 3}
-  - {fileID: -418668007, guid: b2ea0eb5e1fda5a4db1ddf2295fb09d9, type: 3}
-  - {fileID: -534089076, guid: b2ea0eb5e1fda5a4db1ddf2295fb09d9, type: 3}
-  - {fileID: -825921470, guid: b2ea0eb5e1fda5a4db1ddf2295fb09d9, type: 3}
-  jumpSound: {fileID: 8300000, guid: 55ab87729864d3bd8a4a795357f73f9e, type: 3}
-  parrySound: {fileID: 8300000, guid: afc573fb4c533dc73a64e3d3b48d73b5, type: 3}
-  axeCrash: {fileID: 8300000, guid: 5804cc379b2786fb9accee789cfeda8f, type: 3}
-  giantCrash: {fileID: 8300000, guid: b95e2ecde30391ac8a8f9f21b29c487a, type: 3}
-  kaboom: {fileID: 1278707201748465569}
-  minecartPrefab: {fileID: 3447874336975258916, guid: 2cb0a3187416608cf8803a6e3f712e88, type: 3}
-  dicePrefab: {fileID: 493518389811072237, guid: c5cee604cf6477bd6a564e8a0d3dc588, type: 3}
-  maxHP: 20
-  currentHP: 20
-  maxCP: 0
-  currentCP: 0
-  baseDmg: 3
-  minecartDmg: 4
-  minecartCP: 5
-  diceCP: 7
-  axeDmg: 10
-  axeCP: 10
-  giantDmg: 10
-  giantCP: 14
-  potionHP: 15
-  potionCount: 3
-  gelCP: 10
-  gelCount: 3
-  reviveUsed: 0
+  m_EditorClassIdentifier: Assembly-CSharp::Ruff
+  CharacterName: Ruff
+  MaxHealth: 20
+  Team: 0
+  kaboomVFX: {fileID: 0}
+  damageIndicator: {fileID: 0}
+  currentHealth: 0
+  plannedLabel: 
+  plannedTarget: {fileID: 0}
+  MaxCinemaPoint: 0
+  currentCinemaPoint: 0
+  baseDamage: 2
   jumpForce: 13
-  gravityModifier: 1.5
-  isOnStage: 1
-  parryNow: 0
+  gravityModifer: 1.5
   parryCooldownTime: 1.5
+  nextParryTime: 0
+  idleAnimationState: Ruff_Idle
+  attackAnimationState: Ruff_Attack
+  giantAnimationState: Ruff_Giant
+  jumpAnimationState: Ruff_Jump
+  fallAnimationState: Ruff_Fall
+  parryAnimationState: Ruff_Parry
+  damageAnimationState: Ruff_Damaged
+  dyingAnimationState: Ruff_Dying
+  reviveAnimationState: Ruff_Revive
 --- !u!50 &1283252212780430582
 Rigidbody2D:
   serializedVersion: 5
@@ -487,11 +473,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b585efb78608a803a0fa774b927d111, type: 3}
---- !u!198 &1278707201748465569 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 9125212449759046732, guid: 8b585efb78608a803a0fa774b927d111, type: 3}
-  m_PrefabInstance: {fileID: 8006737187589544941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4812918390135613356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3303195482613169217, guid: 8b585efb78608a803a0fa774b927d111, type: 3}

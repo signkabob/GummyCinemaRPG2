@@ -7,7 +7,7 @@ public abstract class Character : MonoBehaviour
 {
     [Header("Base")]
     public string CharacterName;
-    public int MaxHealth = 20;
+    public int MaxHealth;
 
     public event Action HealthChanged;
     public event Action Died;
@@ -29,6 +29,7 @@ public abstract class Character : MonoBehaviour
     private Action onEndOfTurn;
     
     public int CurrentHealth { get { return currentHealth; } }
+    public List<ActionChoice> Actions {get {return possibleActions;}}
     
     protected BattleStage BattleStage { get { return battleStage; } }
     
@@ -63,7 +64,7 @@ public abstract class Character : MonoBehaviour
         plannedTarget = target;
     }
     
-    public void RaiseEndofTurn()
+    public void RaiseEndOfTurn()
     {
         if (!IsAlive)
         {

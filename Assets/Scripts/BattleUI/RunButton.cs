@@ -2,14 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /**
- * GummyCinemaRPG - CommandButton.cs
+ * GummyCinemaRPG - RunButton.cs
  * Name: Ka Bo Cheung
  * Date: 05/11/2026
  * Course: GAME-2341-001
  *
- * Script for the button to select the current command
+ * Script for the button to end the battle early and return to the title screen
  */
-public class CommandButton : MonoBehaviour
+public class RunButton : MonoBehaviour
 {
     // Defined global variables
     private Button button;
@@ -20,12 +20,11 @@ public class CommandButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
-        battleManager = GameObject.Find("Battle Manager").GetComponent<BattleManager>();
     }
 
-    // Select the current command once clicked
+    // Run away from the battle once clicked
     private void OnClick()
     {
-        battleManager.SelectCommand();
+        //StartCoroutine(battleManager.GameOver());
     }
 }

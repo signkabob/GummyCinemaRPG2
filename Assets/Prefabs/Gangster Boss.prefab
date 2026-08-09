@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2613985611162693201}
-  - component: {fileID: 5558685685764920104}
+  - component: {fileID: 5911704776956249082}
   - component: {fileID: 273006598254545008}
   - component: {fileID: 3742206744112820584}
   m_Layer: 0
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 6331301733174261385}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5558685685764920104
+--- !u!114 &5911704776956249082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,29 +46,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 951931432316286847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d34c9da5a88692a1da0d3e82f2d6adac, type: 3}
+  m_Script: {fileID: 11500000, guid: 31514d531b82d6f00aef60d40aeeeb18, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  enemySheet:
-  - {fileID: -1113092647, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  - {fileID: -250181186, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  - {fileID: 552836810, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  - {fileID: -368119561, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  - {fileID: -1838014135, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  - {fileID: 2028323111, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  - {fileID: 507071386, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  - {fileID: 2011213029, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  - {fileID: 921341433, guid: 8d5b112496d63c49e8ea046b435fe380, type: 3}
-  kaboom: {fileID: 335878587651696260}
+  m_EditorClassIdentifier: Assembly-CSharp::Gangster
+  CharacterName: Gangster Boss
+  MaxHealth: 20
+  Team: 1
+  kaboomVFX: {fileID: 335878587651696260}
+  damageIndicator: {fileID: 5446879326487017333}
+  currentHealth: 0
+  plannedLabel: 
+  plannedTarget: {fileID: 0}
+  tackleDamage: 8
+  blasterDamage: 11
   fireballPrefab: {fileID: 3684990354151659994, guid: a4f0d30ea429bc01080581571ff808b0, type: 3}
-  originalPos: {x: 0, y: 0, z: 0}
-  maxHP: 30
-  currentHP: 30
-  tackleDmg: 7
-  blastDmg: 8
+  blasterAimOffset: {x: -1, y: 0, z: 0}
+  spriteCenterOrigin: {fileID: 3652967653373886636}
+  originalPosition: {x: 0, y: 0, z: 0}
   speedForce: 20
   xOutOfBound: -10
-  walled: 0
+  entryFromWrap: 10
+  stoppingDistance: 5
+  isWrapped: 0
+  idleAnimationState: Gangster_Idle
+  tackleAnimationState: Gangster_Run
+  blasterAnimationState: Gangster_Blast
+  dyingAnimationState: Gangster_Dying
 --- !u!50 &273006598254545008
 Rigidbody2D:
   serializedVersion: 5
@@ -244,6 +247,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4145345191758918733, guid: 36c9f48b414534050a5b5a5e3c4bcb13, type: 3}
   m_PrefabInstance: {fileID: 655469516210104603}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5446879326487017333 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4796194988035776110, guid: 36c9f48b414534050a5b5a5e3c4bcb13, type: 3}
+  m_PrefabInstance: {fileID: 655469516210104603}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
 --- !u!1001 &8793845259252501192
 PrefabInstance:
   m_ObjectHideFlags: 0
