@@ -37,33 +37,18 @@ public class PlayerController : MonoBehaviour
 
     private void HandleClickInput(InputAction.CallbackContext context)
     {
-        Debug.Log("CLICK");
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        RaycastHit hit;
 
-        if (hit.collider != null)
+        if (Physics.Raycast(ray, out hit))
         {
             targetPosition = hit.point;
-            Debug.Log(targetPosition);
             navMeshAgent.SetDestination(targetPosition);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            //
-        }
-
-        if (collision.gameObject.CompareTag("Key"))
-        {
-            //
-        }
-
-        if (collision.gameObject.CompareTag("Finish"))
-        {
-            //
-        }
+        
     }
 }
