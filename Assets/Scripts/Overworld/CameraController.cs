@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float verticalSpeed = 10f;      
-    [SerializeField] private float rotationSensitivity = 2f;
+    [SerializeField] private float rotationSensitivity = 1f;
     [SerializeField] private float minPitch = 20f;
     [SerializeField] private float maxPitch = 80f;
     [SerializeField] private float zoomSpeed = 5f;
@@ -70,7 +70,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        HandleCameraMovement();
+        // HandleCameraMovement();
         HandleCameraZoom();
         UpdateCameraRotation();
         UpdateCameraPosition();
