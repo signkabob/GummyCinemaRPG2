@@ -1,6 +1,13 @@
 using System.Collections;
 using UnityEngine;
-
+/*
+ * Final Project: Ruff.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the player character derived from friend class
+ */
 public class Ruff : Friend
 {
     public enum State
@@ -42,11 +49,17 @@ public class Ruff : Friend
         currentState = State.Idle;
     }
 
+    /// <summary>
+    /// Register the actions
+    /// </summary>
     protected override void RegisterActions()
     {
         possibleActions.Add(new ActionChoice("Attack", TargetKind.SingleEnemy, BasicAttack));
     }
 
+    /// <summary>
+    /// Use the basic attack
+    /// </summary>
     public override void BasicAttack()
     {
         Character target = ResolveEnemytarget();
@@ -57,6 +70,11 @@ public class Ruff : Friend
         StartCoroutine(PlayAttackAnimation(target));
     }
     
+    /// <summary>
+    /// Play the basic attack animation
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
     private IEnumerator PlayAttackAnimation(Character target)
     {
         animator.Play(attackAnimationState);

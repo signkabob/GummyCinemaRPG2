@@ -1,12 +1,10 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
 /*
  * Excercise 03.4: SceneChanger.cs
  * Name: Ka Bo Cheung
- * Date: 08/01/2026
+ * Date: 08/10/2026
  * Course: GAME-1377-001
  *
  * Script for changing the scene
@@ -26,20 +24,23 @@ public class SceneChanger : MonoBehaviour
     }
     
     /// <summary>
-    /// Load the game scene
+    /// Load the overworld game scene
     /// </summary>
     public void GoToOverworld()
     {
         StartCoroutine(CinematicLoading(overworldSceneName));
     }
 
+    /// <summary>
+    /// Load the battle game scene
+    /// </summary>
     public void InitiateBattle()
     {
         StartCoroutine(CinematicLoading(battleSceneName));
     }
 
     /// <summary>
-    /// Load the main menu scene
+    /// Load the title screen scene
     /// </summary>
     public void BackToTitleScreen()
     {

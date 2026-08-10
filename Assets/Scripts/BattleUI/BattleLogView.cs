@@ -1,7 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+/*
+ * Final Project: BattleLogView.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the battle log; Unused but for reference purposes
+ * Source: UtsabKDas's Game1377_OOP
+ */
 public class BattleLogView : MonoBehaviour
 {
     public TMP_Text logText;

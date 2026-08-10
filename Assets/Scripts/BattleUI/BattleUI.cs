@@ -3,7 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+/*
+ * Final Project: BattleUI.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the battle UI during every moment of the battle
+ * Source: UtsabKas's GAME1377_OOP
+ */
 public class BattleUI : MonoBehaviour
 {
     public Button actionButtonPrefab;
@@ -72,6 +80,10 @@ public class BattleUI : MonoBehaviour
         BattleEvents.BattleEnded -= OnBattleEnded;
     }
 
+    /// <summary>
+    /// Display the available options for the player
+    /// </summary>
+    /// <param name="round"></param>
     private void OnRoundStarted(int round)
     {
         Debug.Log("Round #"  + round);
@@ -80,17 +92,28 @@ public class BattleUI : MonoBehaviour
         rightButton.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Show the available actions for the friend
+    /// </summary>
+    /// <param name="friend"></param>
     private void OnFriendSelectionStarted(Character friend)
     {
         player = friend;
         ShowActions();
     }
 
+    /// <summary>
+    /// Show the available actions
+    /// </summary>
     private void ShowActions()
     {
         
     }
 
+    /// <summary>
+    /// Submit the chosen action
+    /// </summary>
+    /// <param name="index"></param>
     public void OnActionChosen(int index)
     {
         ActionChoice choice = player.Actions[index];
@@ -105,6 +128,11 @@ public class BattleUI : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Submit the player choice
+    /// </summary>
+    /// <param name="choice"></param>
+    /// <param name="target"></param>
     private void Submit(ActionChoice choice, Character target)
     {
         ClearButtons();
@@ -112,16 +140,26 @@ public class BattleUI : MonoBehaviour
         BattleManager.Instance.SubmitPlayerActionChoice(choice, target);
     }
 
+    /// <summary>
+    /// Do something when the friend is finished with selection
+    /// </summary>
     private void OnFriendSelectionDone()
     {
         ClearButtons();
     }
 
+    /// <summary>
+    ///  Do something when the battle ends
+    /// </summary>
+    /// <param name="winner"></param>
     private void OnBattleEnded(Team winner)
     {
         ClearButtons();
     }
     
+    /// <summary>
+    /// Show specific options based on selected command
+    /// </summary>
     public void OnCommandChosen()
     {
         ClearButtons();
@@ -142,6 +180,10 @@ public class BattleUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Change the command option
+    /// </summary>
+    /// <param name="rightArrow"></param>
     public void onChangeCommand(bool rightArrow)
     {
         if (rightArrow)
@@ -155,6 +197,10 @@ public class BattleUI : MonoBehaviour
         commandText.text = ((Command) commandIndex).ToString();
     }
 
+    /// <summary>
+    ///  Change the choice based on the selected command
+    /// </summary>
+    /// <param name="downArrow"></param>
     public void onChangeChoice(bool downArrow)
     {
         switch ((Command) commandIndex)
@@ -171,22 +217,37 @@ public class BattleUI : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Submit the choice on choosing target
+    /// </summary>
+    /// <param name="target"></param>
     public void OnTargetChosen(Character target)
     {
         Submit(pendingChoice, target);
     }
-
+    
+    /// <summary>
+    /// Escape from the battle on confirmation
+    /// </summary>
     public void OnRunConfirmation()
     {
         BattleManager.Instance.EscapeBattle();
     }
 
+    /// <summary>
+    /// Display the player health and cinema point text
+    /// </summary>
+    /// <param name="player"></param>
     private void ShowPlayerStatus(Friend player)
     {
         playerHealthPointsText.text = "RUFF HP: " + player.CurrentHealth + "/" + player.MaxHealth;
         playerCinemaPointsText.text = "CP: " + player.CurrentCinemaPoint + "/" + player.MaxCinemaPoint;
     }
 
+    /// <summary>
+    /// Display the enemy health text and instantiate its target button 
+    /// </summary>
+    /// <param name="enemies"></param>
     private void ShowEnemiesHealth(List<Character> enemies)
     {
         for (int i = 0; i < enemies.Count; i++)
@@ -210,6 +271,10 @@ public class BattleUI : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Show a list of available targets
+    /// </summary>
+    /// <param name="targets"></param>
     private void ShowTargets(List<Character> targets)
     {
         upButton.gameObject.SetActive(true);
@@ -221,6 +286,9 @@ public class BattleUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Show a list of cinema moves
+    /// </summary>
     private void ShowCinemaMoves()
     {
         backButton.gameObject.SetActive(true);
@@ -229,6 +297,9 @@ public class BattleUI : MonoBehaviour
         cinemaMoves.SetActive(true);
     }
     
+    /// <summary>
+    /// Show a list of items
+    /// </summary>
     private void ShowItems()
     {
         backButton.gameObject.SetActive(true);
@@ -237,12 +308,18 @@ public class BattleUI : MonoBehaviour
         items.SetActive(true);
     }
     
+    /// <summary>
+    /// Show run confirmation
+    /// </summary>
     private void ShowRunConfirmation()
     {
         backButton.gameObject.SetActive(true);
         runButton.gameObject.SetActive(true);
     }
     
+    /// <summary>
+    /// Back to command options
+    /// </summary>
     public void OnBackToCommands()
     {
         ClearButtons();
@@ -251,6 +328,9 @@ public class BattleUI : MonoBehaviour
         rightButton.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Clear all player command options
+    /// </summary>
     private void ClearButtons()
     {
         commandButton.gameObject.SetActive(false);

@@ -1,5 +1,13 @@
 using System;
-
+/*
+ * Final Project: BattleEvents.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the battle events
+ * Source: UtsabKDas's Game1377_OOP
+ */
 public static class BattleEvents
 {
     public static event Action BattleStarted;

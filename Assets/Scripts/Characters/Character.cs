@@ -2,7 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+/*
+ * Final Project: Character.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the character class
+ * Source: UtsabKas's GAME1377_OOP
+ */
 public abstract class Character : MonoBehaviour
 {
     [Header("Base")]
@@ -47,16 +55,28 @@ public abstract class Character : MonoBehaviour
         RegisterActions();
     }
 
+    /// <summary>
+    /// Initialized all characters set on the battle stage
+    /// </summary>
+    /// <param name="battleStage">the stage where the battle occurs</param>
     public void Initialize(BattleStage battleStage)
     {
         this.battleStage = battleStage;
     }
 
+    /// <summary>
+    /// Register the actions
+    /// </summary>
     protected virtual void RegisterActions()
     {
         Debug.Log("Registering Actions");
     }
 
+    /// <summary>
+    /// Plan the action for the target in the battle
+    /// </summary>
+    /// <param name="choice"></param>
+    /// <param name="target"></param>
     public void PlanAction(ActionChoice choice, Character target)
     {
         onEndOfTurn = choice.Perform;
@@ -64,6 +84,9 @@ public abstract class Character : MonoBehaviour
         plannedTarget = target;
     }
     
+    /// <summary>
+    /// Raise the end-of-turn event
+    /// </summary>
     public void RaiseEndOfTurn()
     {
         if (!IsAlive)
@@ -79,16 +102,26 @@ public abstract class Character : MonoBehaviour
         onEndOfTurn = null;
     }
 
+    /// <summary>
+    /// Use the basic attack
+    /// </summary>
     public virtual void BasicAttack()
     {
         Debug.Log("Basic Attack!");
     }
 
+    /// <summary>
+    /// Use the special attack
+    /// </summary>
     public virtual void SpecialAttack()
     {
         Debug.Log("Special Attack!");
     }
 
+    /// <summary>
+    /// Ensures the valid enemy target
+    /// </summary>
+    /// <returns>the planned target or random living opponent </returns>
     protected Character ResolveEnemytarget()
     {
         if (plannedTarget != null && plannedTarget.IsAlive)
@@ -99,6 +132,11 @@ public abstract class Character : MonoBehaviour
         return BattleStage.GetRandomLivingOpponent(this);
     }
 
+    /// <summary>
+    /// Takes damage from the source
+    /// </summary>
+    /// <param name="damageAmount">damage point</param>
+    /// <param name="source">damage source</param>
     public void TakeDamage(int damageAmount, Character source)
     {
         if (!IsAlive)
@@ -115,6 +153,11 @@ public abstract class Character : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Restore health from the source
+    /// </summary>
+    /// <param name="healAmount">health points</param>
+    /// <param name="source">healing source</param>
     public void Heal(int healAmount, Character source)
     {
         if (!IsAlive)

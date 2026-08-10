@@ -1,6 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+/*
+ * Final Project: CameraController.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the overworld camera 
+ * Source: UtsabKDas's Game1377_AI_Practice
+ */
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform target;
@@ -111,7 +119,10 @@ public class CameraController : MonoBehaviour
     {
         elevateInput = 0f;
     }
-
+    
+    /// <summary>
+    /// Move the camera vertically or horizontally
+    /// </summary>
     private void HandleCameraMovement()
     {
         Vector3 moveDirection = transform.forward * moveInput.y + transform.right * moveInput.x;
@@ -122,6 +133,9 @@ public class CameraController : MonoBehaviour
         pivotPosition.y = Mathf.Clamp(pivotPosition.y, minHeight, maxHeight);
     }
 
+    /// <summary>
+    /// Zoom the camera in or out
+    /// </summary>
     private void HandleCameraZoom()
     {
         float scrollInput = Mouse.current.scroll.ReadValue().y;
@@ -137,12 +151,15 @@ public class CameraController : MonoBehaviour
     {
         isRotating = true;
     }
-
+    
     private void HandleRotateHoldCanceled(InputAction.CallbackContext context)
     {
         isRotating = false;
     }
 
+    /// <summary>
+    /// Update the camera rotation
+    /// </summary>
     private void UpdateCameraRotation()
     {
         if (isRotating)
@@ -153,6 +170,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update the camera position to focus and rotate around the player
+    /// </summary>
     private void UpdateCameraPosition()
     {
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);

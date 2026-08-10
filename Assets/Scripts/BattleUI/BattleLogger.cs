@@ -1,5 +1,13 @@
 using UnityEngine;
-
+/*
+ * Final Project: BattleLogger.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the battle logger; Unused but for reference purposes
+ * Source: UtsabKDas's Game1377_OOP
+ */
 public class BattleLogger : MonoBehaviour
 {
     private void OnEnable()

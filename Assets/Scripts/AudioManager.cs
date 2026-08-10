@@ -1,10 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
-
 /*
- * Excercise 03.4: AudioManager.cs
+ * Final Project: AudioManager.cs
  * Name: Ka Bo Cheung
- * Date: 08/01/2026
+ * Date: 08/10/2026
  * Course: GAME-1377-001
  *
  * Script for the audio manager
@@ -13,12 +12,10 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance {  get; private set; }
 
-
     public AudioSource MusicSource;
     public AudioSource SFXSource;
     
     [SerializeField] private AudioClip backgroundMusic;
-    
 
     void Awake()
     {
@@ -41,6 +38,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Get the current music and SFX volume values
+    /// </summary>
+    /// <param name="currentMusicVolume"></param>
+    /// <param name="currentSFXVolume"></param>
     public void GetCurrentVolume(out float currentMusicVolume, out float currentSFXVolume)
     {
         currentMusicVolume = MusicSource.volume;

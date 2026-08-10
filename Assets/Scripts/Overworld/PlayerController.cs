@@ -1,7 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
-
+/*
+ * Final Project: PlayerController.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the player controller
+ * Source: UtsabKDas's Game1377_AI_Practice
+ */
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Transform cameraTransform;
@@ -37,6 +45,10 @@ public class PlayerController : MonoBehaviour
         playerActions.Disable();
     }
 
+    /// <summary>
+    /// Click on the screen to move the player toward that position 
+    /// </summary>
+    /// <param name="context"></param>
     private void HandleClickInput(InputAction.CallbackContext context)
     {
         if (!GameManager.Instance.IsPaused)
@@ -52,6 +64,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Press pause key to pause the game
+    /// </summary>
+    /// <param name="context"></param>
     private void HandlePauseInput(InputAction.CallbackContext context)
     {
         if (GameManager.Instance.IsPaused)

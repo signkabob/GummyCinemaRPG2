@@ -1,7 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Final Project: BattleManager.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the battle manager; 
+ * Source: UtsabKDas's Game1377_OOP
+ */
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance { get; private set; }
@@ -44,12 +52,18 @@ public class BattleManager : MonoBehaviour
         StartRound();
     }
     
+    /// <summary>
+    /// Spawn the player in the battle
+    /// </summary>
     public void SpawnPlayer()
     {
         Player = Instantiate(GameManager.Instance.Player).GetComponent<Character>();
         Party.Add(Player);
     }
 
+    /// <summary>
+    /// Spawn the set of enemies in the battle
+    /// </summary>
     public void SpawnEnemies()
     {
         List<GameObject> spawningEnemies = GameManager.Instance.SpawningEnemies;
@@ -64,6 +78,9 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initialize all characters on the battle stage
+    /// </summary>
     private void InjectBattleStage()
     {
         List<Character> allCharactersOnStage = BattleStage.GetAllLivingMembers();
@@ -73,6 +90,9 @@ public class BattleManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Start the new round
+    /// </summary>
     private void StartRound()
     {
         if (battleOver)
@@ -85,6 +105,11 @@ public class BattleManager : MonoBehaviour
         BattleEvents.RaiseFriendActionSelectionStarted(Player);
     }
 
+    /// <summary>
+    /// Submit the player action and target choice
+    /// </summary>
+    /// <param name="choice"></param>
+    /// <param name="target"></param>
     public void SubmitPlayerActionChoice(ActionChoice choice, Character target)
     {
         Player.PlanAction(choice, target);
@@ -92,6 +117,10 @@ public class BattleManager : MonoBehaviour
         StartCoroutine(ResolveTurn());
     }
     
+    /// <summary>
+    /// Initiate the planned actions and resolve the turn
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ResolveTurn()
     {
         List<Character> livingEnemies = BattleStage.GetLivingMembers(Team.Enemy);
@@ -125,6 +154,12 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="actor"></param>
+    /// <param name="choice"></param>
+    /// <returns></returns>
     private Character PickTargetFor(Character actor, ActionChoice choice)
     {
         if (choice.Targeting == TargetKind.SingleEnemy)
@@ -134,12 +169,20 @@ public class BattleManager : MonoBehaviour
         return null;
     }
     
+    /// <summary>
+    /// Get the turn order for each living battling members; Player always goes first.
+    /// </summary>
+    /// <returns></returns>
     private List<Character> BuildTurnOrder()
     {
         List<Character> order = BattleStage.GetAllLivingMembers();
         return order;
     }
     
+    /// <summary>
+    /// Check if the battle is over
+    /// </summary>
+    /// <returns></returns>
     public bool CheckBattleOver()
     {
         if (battleOver)
@@ -161,6 +204,9 @@ public class BattleManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Escape from the battle
+    /// </summary>
     public void EscapeBattle()
     {
         sceneChanger.GoToOverworld();

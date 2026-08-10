@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 /*
- * Excercise 03.4: SettingUI.cs
+ * Final Project: SettingUI.cs
  * Name: Ka Bo Cheung
- * Date: 08/01/2026
+ * Date: 08/10/2026
  * Course: GAME-1377-001
  *
  * Script for the setting UI controls and modifiers

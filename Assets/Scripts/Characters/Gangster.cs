@@ -1,6 +1,13 @@
 using System.Collections;
 using UnityEngine;
-
+/*
+ * Final Project: Gangster.cs
+ * Name: Ka Bo Cheung
+ * Date: 08/10/2026
+ * Course: GAME-1377-001
+ *
+ * Script for the gangster class derived from enemy class
+ */
 public class Gangster : Enemy
 {
     [Header("Gangster's Attacks")]
