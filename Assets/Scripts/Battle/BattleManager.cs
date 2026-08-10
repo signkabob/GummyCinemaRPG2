@@ -7,8 +7,9 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance { get; private set; }
     
     [Header("Battle Members")]
-    public List<Character> party = new List<Character>();
-    public List<Character> enemies = new List<Character>();
+    public Character Player;
+    public List<Character> Party = new List<Character>();
+    public List<Character> Enemies = new List<Character>();
     
     [Header("Positioning")]
     [SerializeField] private float enemyPositionOffset = -2.5f; 
@@ -22,9 +23,10 @@ public class BattleManager : MonoBehaviour
     private int roundNumber;
     private bool battleOver;
 
-    private Character player;
     private int commandIndex;
-
+    
+    [SerializeField] SceneChanger sceneChanger;
+    
     private void Awake()
     {
         Instance = this;
@@ -32,10 +34,13 @@ public class BattleManager : MonoBehaviour
 
     private void Start()
     {
-        
+        if (sceneChanger == null)
+        {
+            sceneChanger =  GameObject.Find("SceneChanger").GetComponent<SceneChanger>();
+        }
         SpawnPlayer();
         SpawnEnemies();
-        BattleStage = new BattleStage(party, enemies);
+        BattleStage = new BattleStage(Party, Enemies);
         InjectBattleStage();
         BattleEvents.RaiseBattleStarted();
         StartRound();
@@ -43,20 +48,21 @@ public class BattleManager : MonoBehaviour
     
     public void SpawnPlayer()
     {
-        player = Instantiate(GameManager.Instance.player).GetComponent<Character>();
-        party.Add(player);
+        Player = Instantiate(GameManager.Instance.Player).GetComponent<Character>();
+        Party.Add(Player);
     }
 
     public void SpawnEnemies()
     {
-        List<GameObject> spawningEnemies = GameManager.Instance.spawningEnemies;
+        List<GameObject> spawningEnemies = GameManager.Instance.SpawningEnemies;
         for (int i = 0; i < spawningEnemies.Count; i++)
         {
             GameObject enemy = spawningEnemies[i];
             Character spawnedEnemy = Instantiate(enemy, 
                 enemy.transform.position + new Vector3(enemyPositionOffset* i, 0, 0), 
                 enemy.transform.rotation).GetComponent<Character>();
-            enemies.Add(spawnedEnemy);
+            spawnedEnemy.transform.SetAsFirstSibling();
+            Enemies.Add(spawnedEnemy);
         }
     }
 
@@ -78,12 +84,12 @@ public class BattleManager : MonoBehaviour
 
         roundNumber = roundNumber + 1;
         BattleEvents.RaiseRoundStarted(roundNumber);
-        BattleEvents.RaiseFriendActionSelectionStarted(player);
+        BattleEvents.RaiseFriendActionSelectionStarted(Player);
     }
 
     public void SubmitPlayerActionChoice(ActionChoice choice, Character target)
     {
-        player.PlanAction(choice, target);
+        Player.PlanAction(choice, target);
         BattleEvents.RaiseFriendActionSelectionDone();
         StartCoroutine(ResolveTurn());
     }
@@ -155,5 +161,10 @@ public class BattleManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void EscapeBattle()
+    {
+        sceneChanger.BackToMainMenu();
     }
 }

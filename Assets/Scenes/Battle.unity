@@ -628,7 +628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &170482005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -840,7 +840,6 @@ GameObject:
   - component: {fileID: 198690527}
   - component: {fileID: 198690526}
   - component: {fileID: 198690525}
-  - component: {fileID: 198690528}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
@@ -910,7 +909,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 198690526}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034233496}
+        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
+        m_MethodName: onChangeCommand
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &198690526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,19 +960,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198690523}
   m_CullTransparentMesh: 1
---- !u!114 &198690528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198690523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635b862f35ce61f4aa7b6c744dae426f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArrowButton
-  rightArrow: 1
 --- !u!1 &203473459
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +972,6 @@ GameObject:
   - component: {fileID: 203473463}
   - component: {fileID: 203473462}
   - component: {fileID: 203473461}
-  - component: {fileID: 203473464}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -1044,7 +1041,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 203473462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034233496}
+        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
+        m_MethodName: onChangeCommand
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &203473462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,19 +1092,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203473459}
   m_CullTransparentMesh: 1
---- !u!114 &203473464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203473459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635b862f35ce61f4aa7b6c744dae426f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArrowButton
-  rightArrow: 0
 --- !u!1 &276467406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,11 +2665,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cd54d27e0508cf1b891c6e3d5bb32c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
-  party: []
-  enemies: []
+  Player: {fileID: 0}
+  Party: []
+  Enemies: []
   enemyPositionOffset: -2.5
   actionDelay: 0.7
   roundDelay: 0.4
+  sceneChanger: {fileID: 1332515054}
 --- !u!1 &1031152440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,7 +3174,6 @@ GameObject:
   - component: {fileID: 1208072023}
   - component: {fileID: 1208072022}
   - component: {fileID: 1208072021}
-  - component: {fileID: 1208072024}
   m_Layer: 5
   m_Name: Command
   m_TagString: Untagged
@@ -3247,7 +3244,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1208072022}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034233496}
+        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
+        m_MethodName: OnCommandChosen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1208072022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3286,18 +3295,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208072019}
   m_CullTransparentMesh: 1
---- !u!114 &1208072024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208072019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee163c8be556cad6981bb16c93612313, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CommandButton
 --- !u!1 &1317732043
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,6 +3432,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317732043}
   m_CullTransparentMesh: 1
+--- !u!1 &1332515053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1332515055}
+  - component: {fileID: 1332515054}
+  m_Layer: 0
+  m_Name: SceneChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1332515054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332515053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9d2376d16b0b97e945d0a936d4194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
+  gameSceneName: Battle
+--- !u!4 &1332515055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332515053}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.25694, y: 3.4116, z: 5.15209}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1400405553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,7 +3489,6 @@ GameObject:
   - component: {fileID: 1400405558}
   - component: {fileID: 1400405557}
   - component: {fileID: 1400405556}
-  - component: {fileID: 1400405559}
   m_Layer: 5
   m_Name: BackToCommand
   m_TagString: Untagged
@@ -3518,7 +3559,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1400405557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034233496}
+        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
+        m_MethodName: OnBackToCommands
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1400405557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3557,18 +3610,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400405553}
   m_CullTransparentMesh: 1
---- !u!114 &1400405559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400405553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b04d6f36eeadb75989268859dee557cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BackToCommandButton
 --- !u!1 &1448572912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,7 +3796,6 @@ GameObject:
   - component: {fileID: 1522846952}
   - component: {fileID: 1522846951}
   - component: {fileID: 1522846950}
-  - component: {fileID: 1522846953}
   m_Layer: 5
   m_Name: Run
   m_TagString: Untagged
@@ -3826,7 +3866,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1522846951}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034233496}
+        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
+        m_MethodName: OnRunConfirmation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1522846951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3865,18 +3917,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522846948}
   m_CullTransparentMesh: 1
---- !u!114 &1522846953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522846948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4792a25315548140907924a10cb63cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RunButton
 --- !u!1 &1628499629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,7 +3929,6 @@ GameObject:
   - component: {fileID: 1628499634}
   - component: {fileID: 1628499633}
   - component: {fileID: 1628499632}
-  - component: {fileID: 1628499631}
   m_Layer: 5
   m_Name: Up
   m_TagString: Untagged
@@ -3916,19 +3955,6 @@ RectTransform:
   m_AnchoredPosition: {x: 135, y: 65}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1628499631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628499629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4965d865e3cc02e84a72a5fbc513b239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VerticalButton
-  downArrow: 0
 --- !u!114 &1628499632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3972,7 +3998,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1628499633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034233496}
+        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
+        m_MethodName: onChangeChoice
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1628499633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4023,7 +4061,6 @@ GameObject:
   - component: {fileID: 1648884493}
   - component: {fileID: 1648884492}
   - component: {fileID: 1648884491}
-  - component: {fileID: 1648884490}
   m_Layer: 5
   m_Name: Down
   m_TagString: Untagged
@@ -4050,19 +4087,6 @@ RectTransform:
   m_AnchoredPosition: {x: 135, y: -5}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1648884490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648884488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4965d865e3cc02e84a72a5fbc513b239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VerticalButton
-  downArrow: 1
 --- !u!114 &1648884491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4106,7 +4130,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1648884492}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2034233496}
+        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
+        m_MethodName: onChangeChoice
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1648884492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4895,10 +4931,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92039757c8092ee618fc9fa78696c059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player: {fileID: 5527358624952346248, guid: 4ba3d695d8e30d8af9544371ee01697e, type: 3}
-  spawningEnemies:
+  Player: {fileID: 5527358624952346248, guid: 4ba3d695d8e30d8af9544371ee01697e, type: 3}
+  SpawningEnemies:
   - {fileID: 951931432316286847, guid: 256fda286c795b06b925a5c56912694c, type: 3}
   - {fileID: 951931432316286847, guid: 256fda286c795b06b925a5c56912694c, type: 3}
+  cinemaPointUpgrade: 0
 --- !u!4 &1855727806
 Transform:
   m_ObjectHideFlags: 0
@@ -5440,6 +5477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2034233495}
+  - component: {fileID: 2034233496}
   m_Layer: 0
   m_Name: BattleUI
   m_TagString: Untagged
@@ -5462,6 +5500,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034233496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034233494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3118f473632962ab384689bc1673c767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleUI
+  actionButtonPrefab: {fileID: 0}
+  commandButton: {fileID: 1208072021}
+  leftButton: {fileID: 203473461}
+  rightButton: {fileID: 198690525}
+  upButton: {fileID: 1628499632}
+  downButton: {fileID: 1648884491}
+  backButton: {fileID: 1400405556}
+  runButton: {fileID: 1522846950}
+  targetButtonPrefab: {fileID: 4758747784817420307, guid: e68ab2b367f3714f98e7e7091c06346e, type: 3}
+  cinemaMoves: {fileID: 1803769273}
+  selectCinemaMoveButton: {fileID: 1981489445}
+  items: {fileID: 170482004}
+  selectItemButton: {fileID: 2133628650}
+  playerHealthPointsText: {fileID: 857223303}
+  playerCinemaPointsText: {fileID: 1317732045}
+  potionText: {fileID: 1827800982}
+  gelText: {fileID: 1669058023}
+  reviveText: {fileID: 298891691}
+  enemyHealthTextPrefab: {fileID: 843041497668578496, guid: 622280fec5ed8278a81859cbb3d98022, type: 3}
+  announcerText: {fileID: 840097589}
+  commandIndex: 0
+  commandLength: 0
+  commandText: {fileID: 11625739}
+  canvas: {fileID: 484635864}
+  rowOffset: -30
+  columnOffset: -120
 --- !u!1 &2069549656
 GameObject:
   m_ObjectHideFlags: 0
@@ -5737,7 +5813,8 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 2069549657}
   - {fileID: 484635864}
+  - {fileID: 2034233495}
   - {fileID: 1103031557}
   - {fileID: 1009454387}
-  - {fileID: 2034233495}
   - {fileID: 1855727806}
+  - {fileID: 1332515055}

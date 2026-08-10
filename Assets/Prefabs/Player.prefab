@@ -58,7 +58,7 @@ MonoBehaviour:
   currentHealth: 0
   plannedLabel: 
   plannedTarget: {fileID: 0}
-  MaxCinemaPoint: 0
+  MaxCinemaPoint: 5
   currentCinemaPoint: 0
   baseDamage: 2
   jumpForce: 13
