@@ -202,7 +202,7 @@ public class BattleUI : MonoBehaviour
             // Initialize and store enemy target button   
             TargetButton targetButton = Instantiate(targetButtonPrefab, canvas).GetComponent<TargetButton>();
             targetButton.GetComponent<RectTransform>().localPosition =
-                enemyHealthText.rectTransform.localPosition + new Vector3(-120, 10, 0);
+                enemyHealthText.rectTransform.localPosition + new Vector3(columnOffset, 10, 0);
             targetButton.transform.SetAsFirstSibling();
             targetButton.Setup(this, enemy);
             targetButton.gameObject.SetActive(false);
@@ -214,7 +214,11 @@ public class BattleUI : MonoBehaviour
     {
         upButton.gameObject.SetActive(true);
         downButton.gameObject.SetActive(true);
-        //targetButtons[currentTarget].gameObject.SetActive(true);
+        backButton.gameObject.SetActive(true);
+        foreach (TargetButton targetButton in targetButtons)
+        {
+            targetButton.gameObject.SetActive(true);
+        }
     }
 
     private void ShowCinemaMoves()

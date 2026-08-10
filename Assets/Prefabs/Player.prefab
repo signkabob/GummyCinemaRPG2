@@ -53,8 +53,8 @@ MonoBehaviour:
   CharacterName: Ruff
   MaxHealth: 20
   Team: 0
-  kaboomVFX: {fileID: 0}
-  damageIndicator: {fileID: 0}
+  kaboomVFX: {fileID: 1278707201748465569}
+  damageIndicator: {fileID: 2149483168146461462}
   currentHealth: 0
   plannedLabel: 
   plannedTarget: {fileID: 0}
@@ -407,6 +407,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36c9f48b414534050a5b5a5e3c4bcb13, type: 3}
+--- !u!114 &2149483168146461462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4796194988035776110, guid: 36c9f48b414534050a5b5a5e3c4bcb13, type: 3}
+  m_PrefabInstance: {fileID: 6871365360716385656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
 --- !u!224 &7412018021046516021 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4145345191758918733, guid: 36c9f48b414534050a5b5a5e3c4bcb13, type: 3}
@@ -473,6 +484,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b585efb78608a803a0fa774b927d111, type: 3}
+--- !u!198 &1278707201748465569 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9125212449759046732, guid: 8b585efb78608a803a0fa774b927d111, type: 3}
+  m_PrefabInstance: {fileID: 8006737187589544941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4812918390135613356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3303195482613169217, guid: 8b585efb78608a803a0fa774b927d111, type: 3}

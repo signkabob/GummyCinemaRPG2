@@ -15,6 +15,7 @@ public abstract class Friend : Character
     protected override void Awake()
     {
         Team = Team.Party;
+        currentCinemaPoint = MaxCinemaPoint;
         base.Awake();
     }
     
