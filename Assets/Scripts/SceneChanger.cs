@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 /*
  * Excercise 03.4: SceneChanger.cs
@@ -11,37 +13,40 @@ using UnityEngine.SceneManagement;
  */
 public class SceneChanger : MonoBehaviour
 {
-    [SerializeField] string gameSceneName = "Battle";
+    [SerializeField] private string titleScene = "Title";
+    [SerializeField] private string overworldSceneName = "Overworld";  
+    [SerializeField] private string battleSceneName = "Battle";
+    [SerializeField] private Curtains curtains;
 
+    private IEnumerator CinematicLoading(string sceneName)
+    {
+        yield return StartCoroutine((curtains.CloseCurtains()));
+        yield return null;
+        SceneManager.LoadScene(sceneName);
+    }
+    
     /// <summary>
     /// Load the game scene
     /// </summary>
-    public void StartGame()
+    public void GoToOverworld()
     {
-        SceneManager.LoadScene(gameSceneName);
+        StartCoroutine(CinematicLoading(overworldSceneName));
+    }
+
+    public void InitiateBattle()
+    {
+        StartCoroutine(CinematicLoading(battleSceneName));
     }
 
     /// <summary>
     /// Load the main menu scene
     /// </summary>
-    public void BackToMainMenu()
+    public void BackToTitleScreen()
     {
         // Resets the time scale in case the game was paused 
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene(0);
-    }
-
-    /// <summary>
-    /// Reload the game scene
-    /// </summary>
-    public void RestartGame()
-    {
-        // Resets the time scale in case the game was paused 
-        Time.timeScale = 1f;
-
-        // Reloads the currently active scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(CinematicLoading(overworldSceneName));
     }
 
     /// <summary>

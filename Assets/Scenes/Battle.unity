@@ -3461,7 +3461,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9d2376d16b0b97e945d0a936d4194f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
-  gameSceneName: Battle
+  titleScene: Title
+  overworldSceneName: Overworld
+  battleSceneName: Battle
+  curtains: {fileID: 3782921467449508856}
 --- !u!4 &1332515055
 Transform:
   m_ObjectHideFlags: 0
@@ -4935,6 +4938,7 @@ MonoBehaviour:
   SpawningEnemies:
   - {fileID: 951931432316286847, guid: 256fda286c795b06b925a5c56912694c, type: 3}
   - {fileID: 951931432316286847, guid: 256fda286c795b06b925a5c56912694c, type: 3}
+  NumberOfVictory: 0
   cinemaPointUpgrade: 0
 --- !u!4 &1855727806
 Transform:
@@ -5804,6 +5808,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf280f747b709c2b91781b5df6abbac, type: 3}
+--- !u!114 &3782921467449508856 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8390424891185236456, guid: acf280f747b709c2b91781b5df6abbac, type: 3}
+  m_PrefabInstance: {fileID: 3782921467449508855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc928f11d22accc2a3566b1bb096246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Curtains
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

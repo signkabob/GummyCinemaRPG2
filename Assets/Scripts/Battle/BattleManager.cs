@@ -22,8 +22,6 @@ public class BattleManager : MonoBehaviour
 
     private int roundNumber;
     private bool battleOver;
-
-    private int commandIndex;
     
     [SerializeField] SceneChanger sceneChanger;
     
@@ -165,6 +163,6 @@ public class BattleManager : MonoBehaviour
 
     public void EscapeBattle()
     {
-        sceneChanger.BackToMainMenu();
+        sceneChanger.GoToOverworld();
     }
 }

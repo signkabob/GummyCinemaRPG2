@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private Transform target;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float verticalSpeed = 10f;      
     [SerializeField] private float rotationSensitivity = 1f;
@@ -63,16 +64,18 @@ public class CameraController : MonoBehaviour
     {
         yaw = 45f;
         pitch = 45f;
-        distance = 20f;
+        distance = 10f;
 
         pivotPosition = transform.position;
     }
 
     private void Update()
     {
-        // HandleCameraMovement();
-        HandleCameraZoom();
         UpdateCameraRotation();
+    }
+    
+    private void LateUpdate()
+    {
         UpdateCameraPosition();
     }
 
@@ -149,10 +152,11 @@ public class CameraController : MonoBehaviour
 
     private void UpdateCameraPosition()
     {
-        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0f);
-        Vector3 cameraOffset = new Vector3(0f, 0f, -distance);
+        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        transform.position = pivotPosition + rotation * cameraOffset;
-        transform.rotation = rotation;
+        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0f);
+        Vector3 offset = rotation * new Vector3(0f, 0f, -distance);
+        transform.position = target.position + offset;
+        transform.LookAt(target);
     }
 }

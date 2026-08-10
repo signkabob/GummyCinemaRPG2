@@ -304,7 +304,6 @@ GameObject:
   - component: {fileID: 327107860}
   - component: {fileID: 327107859}
   - component: {fileID: 327107858}
-  - component: {fileID: 327107861}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -375,7 +374,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 327107859}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 893316244}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: GoToOverworld
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &327107859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,19 +425,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327107856}
   m_CullTransparentMesh: 1
---- !u!114 &327107861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327107856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2edb19be4b02e50f58fcb1e66a8f7a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayButton
-  curtains: {fileID: 593889325}
 --- !u!1 &568239586
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +653,7 @@ GameObject:
   - component: {fileID: 593889328}
   - component: {fileID: 593889327}
   - component: {fileID: 593889329}
+  - component: {fileID: 593889330}
   m_Layer: 5
   m_Name: Curtains
   m_TagString: Untagged
@@ -729,7 +728,7 @@ Animator:
   m_GameObject: {fileID: 593889325}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 64fbec32fab11a2829998de92b9e692e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3ccfda791f114500eb73b7b6284a65eb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -741,6 +740,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &593889330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593889325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc928f11d22accc2a3566b1bb096246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Curtains
+  closedCurtainsStateName: Curtains_Down
 --- !u!1 &811233217
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +765,6 @@ GameObject:
   - component: {fileID: 811233222}
   - component: {fileID: 811233221}
   - component: {fileID: 811233220}
-  - component: {fileID: 811233223}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -824,7 +835,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 811233221}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 893316244}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &811233221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -863,18 +886,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811233217}
   m_CullTransparentMesh: 1
---- !u!114 &811233223
+--- !u!114 &893316244 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8124857834467527666, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+  m_PrefabInstance: {fileID: 810817485231365621}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 811233217}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5420eb7629698399a4d49f3156848f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d9d2376d16b0b97e945d0a936d4194f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuitButton
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
 --- !u!1 &1530010798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,6 +1504,67 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &810817485231365621
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3604506284313758335, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_Name
+      value: SceneChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761040139231579858, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8124857834467527666, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
+      propertyPath: curtains
+      value: 
+      objectReference: {fileID: 593889330}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ccf8021fa5a70e1b5b4a3f22baff8b08, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1490,3 +1573,4 @@ SceneRoots:
   - {fileID: 1530010800}
   - {fileID: 2078151170}
   - {fileID: 578008175}
+  - {fileID: 810817485231365621}
