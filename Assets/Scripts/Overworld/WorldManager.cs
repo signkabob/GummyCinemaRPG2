@@ -39,8 +39,11 @@ public class WorldManager : MonoBehaviour
     {
         foreach (int encounterIndex in encounterIndexes)
         {
-            overworldEnemies[encounterIndex].SetActive(true);
-            overworldEnemies[encounterIndex].GetComponent<Encounter>().SetUp(sceneChanger, encounterIndex);
+            if (GameManager.Instance.WinFlags[encounterIndex] != true)
+            {
+                overworldEnemies[encounterIndex].SetActive(true);
+                overworldEnemies[encounterIndex].GetComponent<Encounter>().SetUp(sceneChanger, encounterIndex);
+            }
         }
     }
 }

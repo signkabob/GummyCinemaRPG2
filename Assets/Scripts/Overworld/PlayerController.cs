@@ -26,29 +26,41 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerActions.Click.performed += HandleClickInput;
+        playerActions.Pause.performed += HandlePauseInput;
         playerActions.Enable();
     }
 
     private void OnDisable()
     {
         playerActions.Click.performed -= HandleClickInput;
+        playerActions.Pause.performed -= HandlePauseInput;
         playerActions.Disable();
     }
 
     private void HandleClickInput(InputAction.CallbackContext context)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (!GameManager.Instance.IsPaused)
         {
-            targetPosition = hit.point;
-            navMeshAgent.SetDestination(targetPosition);
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                targetPosition = hit.point;
+                navMeshAgent.SetDestination(targetPosition);
+            }
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void HandlePauseInput(InputAction.CallbackContext context)
     {
-        
+        if (GameManager.Instance.IsPaused)
+        {
+            GameManager.Instance.Unpause();
+        }
+        else
+        {
+            GameManager.Instance.Pause();
+        }
     }
 }

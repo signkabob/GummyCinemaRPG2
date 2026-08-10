@@ -71,7 +71,10 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        UpdateCameraRotation();
+        if (!GameManager.Instance.IsPaused)
+        {
+            UpdateCameraRotation();
+        }
     }
     
     private void LateUpdate()

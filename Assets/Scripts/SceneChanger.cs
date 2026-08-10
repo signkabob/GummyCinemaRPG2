@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
  */
 public class SceneChanger : MonoBehaviour
 {
-    [SerializeField] private string titleScene = "Title";
+    [SerializeField] private string titleSceneName = "Title";
     [SerializeField] private string overworldSceneName = "Overworld";  
     [SerializeField] private string battleSceneName = "Battle";
     [SerializeField] private Curtains curtains;
@@ -43,10 +43,8 @@ public class SceneChanger : MonoBehaviour
     /// </summary>
     public void BackToTitleScreen()
     {
-        // Resets the time scale in case the game was paused 
-        Time.timeScale = 1f;
-
-        StartCoroutine(CinematicLoading(overworldSceneName));
+        GameManager.Instance.Unpause();
+        StartCoroutine(CinematicLoading(titleSceneName));
     }
 
     /// <summary>

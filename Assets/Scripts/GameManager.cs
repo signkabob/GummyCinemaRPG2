@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     
     [Header("Battle Parameters")]
     public GameObject Player;
-    public List<GameObject> SpawningEnemies = new List<GameObject>();
+
+    public List<GameObject> SpawningEnemies;
     public Dictionary<string, int> Inventory = new Dictionary<string, int>()
     {
         ["Potion"] = 3,
@@ -17,10 +18,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Overworld Parameters")]
     private int CurrentEncounterID;
+
     public Dictionary<int, bool> WinFlags;
-    public int NumberOfVictory = 0;
-    
+    public int NumberOfVictory { get; private set; } = 0;
     [SerializeField] private int cinemaPointUpgrade = 5;
+
+    public bool IsPaused { get; private set; } = false;
+    [SerializeField] private GameObject pauseMenu;
     
     private void Awake()
     {
@@ -53,5 +57,36 @@ public class GameManager : MonoBehaviour
         WinFlags[CurrentEncounterID] = true;
         Player.GetComponent<Friend>().MaxCinemaPoint +=  cinemaPointUpgrade;
         NumberOfVictory++;
+    }
+    
+    /// <summary>
+    /// Display the pause screen
+    /// </summary>
+    public void Pause()
+    {
+        IsPaused = !IsPaused;
+        if (IsPaused)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
+        pauseMenu.SetActive(IsPaused);
+    }
+
+    /// <summary>
+    /// Undisplay the pause screen
+    /// </summary>
+    public void Unpause()
+    {
+        if (pauseMenu != null)
+        {
+            IsPaused = false;
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 }
